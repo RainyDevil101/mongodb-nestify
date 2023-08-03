@@ -1,41 +1,32 @@
-import Products from '../models/product.model.js';
+import { creatProduct, deleteProduct, getProduct, getProducts, updateProduct } from '../controllers/products.controller.js';
+
+
 
 const routes = [
   {
     url: '/products/:id',
     method: 'GET',
-    handler: async(request, replay) => {
-      await Products.find();
-      replay.send('Single product');
-    },
+    handler: getProduct
   },
   {
     url: '/products',
     method: 'GET',
-    handler: async (request, replay) => {
-      replay.send('Products');
-    },
+    handler: getProducts
   },
   {
     url: '/products',
     method: 'POST',
-    handler: async (request, replay) => {
-      replay.send('Creating product');
-    },
+    handler: creatProduct
   },
   {
     url: '/products/:id',
     method: 'DELETE',
-    handler: async (request, replay) => {
-      replay.send('Deleting product');
-    },
+    handler: deleteProduct
   },
   {
     url: '/products/:id',
     method: 'PUT',
-    handler: async (request, replay) => {
-      replay.send('Updating product');
-    },
+    handler: updateProduct
   },
 ];
 

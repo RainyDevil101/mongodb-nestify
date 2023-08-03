@@ -10,6 +10,7 @@ const fastify = Fastify({
 
 connectDB();
 
+
 fastify.get('/', async (request, reply) => {
   reply.send({ message: 'Hello world' });
 });
@@ -18,16 +19,13 @@ routes.map((route) => {
   fastify.route(route);
 });
 
-// fastify.route(...routes);
-
-
-const start = async () => {
+const starting = async () => {
   try {
-    await fastify.listen({ port: `${process.env.PORT}` })
+    await fastify.listen({ port: `${process.env.PORT}` });
   } catch (err) {
     fastify.log.error(err);
     process.exit(1);
   }
 };
 
-start();
+starting();
